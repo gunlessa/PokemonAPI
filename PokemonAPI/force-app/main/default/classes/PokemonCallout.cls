@@ -12,8 +12,11 @@ public with sharing class PokemonCallout {
         HttpResponse response = http.send(request);
         String jsonBody = response.getBody();
 
-        if (response.getStatusCode() == 200) {
-            System.debug('jsonBody' + jsonBody);
+        if (response.getStatusCode() == 200 && jsonBody != null) {
+            PokemonWrapper.PokemonDetailWrapper pokemonDetails = (PokemonWrapper.PokemonDetailWrapper) JSON.deserialize(jsonBody, PokemonWrapper.PokemonDetailWrapper.class);
+            for (PokemonWrapper.StatsWrapper statsWrapper : pokemonDetails.stats) {
+                System.debug('statsWrapper: ' + statsWrapper);
+            }
         }
     }
 }
