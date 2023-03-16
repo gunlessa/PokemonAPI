@@ -13,13 +13,10 @@ export default class FavoritePokemon extends LightningElement {
         getPokemonDetails({contactID : this.recordId})
             .then(result => {
                 console.log(JSON.stringify(result));
-                pokemonImg = result.sprites.front_default;
+                this.pokemonImg = result.sprites.front_default;
             })
             .catch(error => {
                 console.log(JSON.stringify(error));
             });
     }
-    
-    console.log(pokemonImg);
-
 }
