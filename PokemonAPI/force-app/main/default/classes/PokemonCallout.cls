@@ -1,7 +1,7 @@
 public with sharing class PokemonCallout {
     
     public static PokemonWrapper.PokemonDetailWrapper pokemonCallout(Contact contact) {
-        Integration__mdt pokemonAPISettings = [SELECT EndPoint__c, Method__c FROM Integration__mdt];
+        Integration__mdt pokemonAPISettings = [SELECT EndPoint__c, Method__c FROM Integration__mdt WHERE DeveloperName = 'PokemonAPI'];
         String endPointPokemon = pokemonAPISettings.EndPoint__c + Contact.FavoritePokemon__c;
 
         Http http = new Http();
